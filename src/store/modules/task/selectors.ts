@@ -1,0 +1,1 @@
+export const taskSelector = (s: any) => s.task

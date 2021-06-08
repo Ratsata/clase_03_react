@@ -1,15 +1,24 @@
-
+import { useDispatch } from 'react-redux'
+import { addTaskAction } from '../../store/modules/task/actions'
 import { useState } from 'react';
 
 const Formulario = () => {
+    // const task: any = useSelector(taskSelector)
+
     const [tarea, setTarea] = useState('')
 
     const handlerOnChange = (event: any) => {
         setTarea(event.target.value)
     }
 
+    const dispatch = useDispatch()
     const handlerOnClick = () => {
-        
+        const task = {
+            name: tarea,
+            check : false,
+        }
+        dispatch(addTaskAction(task))
+        setTarea('')
     }
 
     return (

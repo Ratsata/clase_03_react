@@ -4,7 +4,7 @@ import Card from '../../components/card/Card';
 const Home = () => {
     return (
         <div className={styles.background}>
-            <div className="container">
+            <div className="container col-6">
                 <Card />
             </div>
         </div>
