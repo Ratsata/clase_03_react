@@ -11,3 +11,10 @@ export const updateTaskAction = (task: any) => {
         payload: task,
     }
 }
+
+export const removeTaskAction = (id: number) => {
+    return {
+        type: 'TASK_REMOVE',
+        payload: id,
+    }
+}

@@ -1,17 +1,12 @@
-import { useState } from 'react';
 import Cabecera from './../cabecera/Cabecera';
 import Formulario from './../formulario/Formulario';
 import Listado from './../listado/Listado';
-
+import styles from './Card.module.css';
 
 const Card = () => {
-
-    const [cantidadTareas, setCantidadTareas] = useState('4 restantes');
-    const [tareas, setTareas] = useState<any>({});
-
     return (
-        <div>
-            <div className="card card-block">
+        <div className={styles.padding}>
+            <div className={"card card-block " + styles.card}>
                 <Cabecera />
                 <Listado />
                 <Formulario />

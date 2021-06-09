@@ -1,9 +1,9 @@
 const initialState = {
-    tasks: [
+    task: [
         {
             id: 0,
-            name: 'Tarea inicial',
-            check: false,
+            name: 'Finalizar la tarea 03',
+            check: true,
         }
     ]
 }
@@ -12,20 +12,24 @@ const taskReducer = (prevState: any = initialState, action: any) => {
     switch (action.type) {
         case 'TASK_ADD':
             return {
-                tasks: [...prevState.tasks, action.payload],
+                task: [...prevState.task, action.payload],
             }
         case 'TASK_UPDATE':
-            console.log("prevstate:" + JSON.stringify(prevState))
-            const id = action.payload.id
-            prevState.tasks.map((u: any) => {
-                if (u.id == id) {
-                    u.check = action.payload.check
-                }
-                console.log("prevstateMap:" + JSON.stringify(prevState))
-                return prevState
-            })
-            console.log("prevstateFinal:" + JSON.stringify(prevState))
-            return prevState
+            let taskUpdate = [...prevState.task].find(task => task.id === action.payload.id);
+            taskUpdate.check = action.payload.check;
+            return {
+                task: [...prevState.task],
+            }
+        case 'TASK_REMOVE':
+            let tasks = [...prevState.task];
+            let taskRemove = tasks.find(task => task.id === action.payload);
+            let index = tasks.indexOf(taskRemove, 0);
+            if (index > -1) {
+                tasks.splice(index, 1);
+            }
+            return {
+                task: tasks
+            }
         default:
             return prevState
     }
