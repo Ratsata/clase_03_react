@@ -1,11 +1,12 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import logger from 'redux-logger'
+import { createStore, combineReducers } from 'redux'
 import taskReducer from './modules/task'
+import searchReducer from './modules/search'
+
 const rootReducer = combineReducers({
-    task: taskReducer
+    task: taskReducer,
+    search: searchReducer
 })
 
-//, applyMiddleware(logger)
 const store = createStore(rootReducer)
 
 export default store
